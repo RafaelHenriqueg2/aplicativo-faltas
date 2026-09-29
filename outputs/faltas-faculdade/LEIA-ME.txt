@@ -1,0 +1,14 @@
+MINHA FREQUÊNCIA — COMO USAR
+
+Abra index.html para usar o sistema no computador. No celular, publique a pasta em um serviço de hospedagem estática com HTTPS e abra o endereço no navegador. Use “Adicionar à tela inicial” (ou “Instalar app”) para instalar como aplicativo.
+
+O app funciona offline depois de carregado e salva os registros localmente no próprio aparelho/navegador. Os dados não são sincronizados entre aparelhos.
+
+REGRAS CONFIGURADAS
+- Período inicial: 8 semanas (bimestre), ajustável na tela.
+- Bruno: segunda e terça, 3 aulas por dia (6 aulas por semana).
+- Columbeli: quarta, 3 aulas por semana.
+- Mathues: quinta, 3 aulas por semana.
+- Limite de faltas por professor no bimestre padrão: Bruno, 12; Columbeli, 6; Mathues, 6. O cálculo considera até 25% das aulas do período, arredondado para baixo, para manter pelo menos 75% de presença.
+
+Cadastre, edite e remova professores. Configure os dias de aula e quantas aulas cada professor dá por dia. O registro valida a data e limita as faltas ao total de aulas configuradas para aquele dia.

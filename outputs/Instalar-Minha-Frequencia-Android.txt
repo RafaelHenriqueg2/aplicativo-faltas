@@ -1,0 +1,8 @@
+INSTALAR MINHA FREQUÊNCIA NO ANDROID
+
+1. Baixe Minha-Frequencia-Android.apk para o celular. Se o arquivo estiver no computador, transfira-o para o telefone por USB ou outro meio de sua preferência.
+2. Toque no APK no app Arquivos/Downloads e confirme a instalação.
+3. Se o Android pedir, permita a instalação de apps para o navegador ou gerenciador de arquivos usado para abrir o APK. Depois, toque em Instalar.
+4. Abra “Minha Frequência” na lista de aplicativos.
+
+O aplicativo usa os dados armazenados no próprio celular. A versão é assinada para instalação direta e uso pessoal; ela ainda não foi publicada na Google Play.

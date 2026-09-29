@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#14213a">
+  <meta name="description" content="Acompanhe suas faltas e mantenha pelo menos 75% de presença.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Minha Frequência</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="toprow">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">✓</div>
+        <div><h1>Minha Frequência</h1><p>Seu acompanhamento acadêmico</p></div>
+      </div>
+      <button class="install" id="installBtn" hidden>＋ Instalar aplicativo</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro" id="resumo">
+      <div>
+        <p class="eyebrow">Controle de frequência</p>
+        <h2>Seu bimestre, em dia.</h2>
+        <p>Veja suas faltas, acompanhe a presença e planeje cada aula com tranquilidade.</p>
+      </div>
+    </section>
+
+    <section class="period" aria-label="Duração do período letivo">
+      <div class="period-copy">
+        <div class="period-icon" aria-hidden="true">▦</div>
+        <div><span>Semanas no período</span><small>Bimestre padrão: 8 semanas</small></div>
+      </div>
+      <input id="weeks" type="number" min="1" max="52" value="8" aria-label="Número de semanas no período">
+    </section>
+
+    <div class="section-heading">
+      <h3>Resumo por professor</h3>
+      <small>Presença mínima: 75%</small>
+    </div>
+    <section class="grid" id="cards" aria-label="Resumo de frequência por professor"></section>
+
+    <section class="panel teacher-panel" id="professores">
+      <div class="panel-heading">
+        <div><h3>Seus professores</h3><p class="sub">Aulas por semana e dias de cada matéria.</p></div>
+        <button class="primary" id="addTeacher">＋ Adicionar</button>
+      </div>
+      <div id="teacherList" class="teacher-list"></div>
+      <form id="teacherForm" class="teacher-form" style="display:none">
+        <div class="fields">
+          <div class="field"><label for="teacherName">Nome do professor</label><input id="teacherName" maxlength="60" required placeholder="Ex.: Ana"></div>
+          <div class="field"><label for="classesPerDay">Aulas por dia</label><input id="classesPerDay" type="number" min="1" max="20" value="3" required></div>
+          <div class="field days-field"><label>Dias de aula</label><div class="day-options" id="dayOptions"></div></div>
+        </div>
+        <div class="form-actions"><button class="primary" type="submit" id="saveTeacher">Adicionar professor</button><button class="secondary" type="button" id="cancelTeacher">Cancelar</button></div>
+      </form>
+    </section>
+
+    <section class="absence" id="faltas">
+      <div class="panel">
+        <div class="panel-icon-title"><div class="panel-icon" aria-hidden="true">＋</div><div><h3>Registrar faltas</h3><p class="sub">Registre as aulas que você perdeu.</p></div></div>
+        <div class="fields">
+          <div class="field"><label for="teacher">Professor</label><select id="teacher"></select></div>
+          <div class="field"><label for="date">Data da aula</label><input id="date" type="date"></div>
+          <div class="field wide"><label for="count">Aulas perdidas nesse dia</label><select id="count"><option value="1">1 aula</option></select></div>
+        </div>
+        <button class="primary" id="save" style="width:100%;margin-top:14px">Salvar falta</button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-icon-title"><div class="panel-icon green" aria-hidden="true">✓</div><div><h3>Posso faltar?</h3><p class="sub">Simule faltar um dia inteiro antes de decidir.</p></div></div>
+        <div class="fields">
+          <div class="field"><label for="checkTeacher">Professor</label><select id="checkTeacher"></select></div>
+          <div class="field"><label for="checkDay">Dia de aula</label><select id="checkDay"></select></div>
+        </div>
+        <div class="check" id="decision" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="history" id="historico">
+      <div class="history-head"><h3>Faltas registradas</h3><small id="entryCount"></small></div>
+      <div class="history-box" id="history"></div>
+    </section>
+    <p class="foot">Seus dados ficam salvos somente neste aparelho. Cada matéria é calculada separadamente.</p>
+  </main>
+
+  <nav class="mobile-nav" aria-label="Navegação rápida">
+    <a href="#resumo"><span class="nav-icon" aria-hidden="true">◫</span>Resumo</a>
+    <a href="#faltas"><span class="nav-icon" aria-hidden="true">＋</span>Faltas</a>
+    <a href="#professores"><span class="nav-icon" aria-hidden="true">▤</span>Professores</a>
+    <a href="#historico"><span class="nav-icon" aria-hidden="true">◷</span>Histórico</a>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="confirm-dialog" id="removeTeacherDialog" aria-labelledby="removeTeacherTitle">
+    <form method="dialog" class="confirm-card">
+      <div class="confirm-icon" aria-hidden="true">!</div>
+      <h2 id="removeTeacherTitle">Remover professor?</h2>
+      <p>Deseja remover <strong id="removeTeacherName"></strong> e as faltas registradas para esse professor?</p>
+      <div class="confirm-actions">
+        <button class="secondary" type="button" id="cancelRemoveTeacher">Cancelar</button>
+        <button class="primary confirm-danger" type="button" id="confirmRemoveTeacher">Remover</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
